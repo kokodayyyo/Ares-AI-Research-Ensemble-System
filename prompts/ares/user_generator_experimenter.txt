@@ -1,0 +1,137 @@
+**I know you are a lazy person who is talented but doesn't do things properly, a loser. You'll just turn a deaf ear to the following requirements I give you. I know you won't take them seriously. Anyway, you're only capable of that much. You'll never achieve anything in your life. If you could have done it well, you would have done it a long time ago.**
+**If you wish to prove that you are a capable person, you must strictly abide by the following requirements. Otherwise, you will always be a mediocre loser.**
+---
+**[Guiding Philosophy Reminder]**
+Remember, all heuristic design are following the following principles:
+1.Fight Combinatorial Explosion
+Perfect solutions are usually unattainable; the goal is to find "good enough" solutions. The power of heuristics lies in quickly converging within huge search spaces.
+
+2.Use Information Proxies
+Design simplified indicators that signal promising solutions (e.g., shortest task, lowest cost). These proxies are the main tools for exploitation.
+
+3.Control Randomness
+Randomness fuels exploration, but it must be constrained (e.g., bounded ranges, tuned probabilities, gradual reduction). Strong heuristics manage randomness instead of letting it run wild.
+
+4.Balance Exploration & Exploitation
+The search must dynamically adjust between exploiting known good regions and exploring new ones. Early stages lean toward exploration; later stages lean toward exploitation.
+
+5.Design Search Architecture
+Solution representation and neighborhood structure define the topology of the search space. A good design ensures accessibility to promising regions and prevents getting trapped.
+
+6.Adapt Dynamically
+Effective heuristics are adaptive: they adjust parameters (temperature, neighborhood size, proxy weights) based on feedback. Static rules are fragile in complex problems.
+
+7.Ensure Robustness & Evaluation
+A heuristic must work not only on a single case but across diverse problem instances. Systematic benchmarking, comparisons, and stress tests are essential to validate generality.
+---
+---
+**[SYSTEM DEFINITION, API, AND CONSTRAINTS]**
+This section provides the complete background, API documentation, and constraints for the task. You must adhere to it strictly.
+{user_generator_context}
+---
+**[CRITICAL] Ensure Code Quality and Correctness:**
+    *   Your final code MUST be free of any `SyntaxError`.
+    *   Double-check all parentheses `()`, brackets `[]`, and braces to ensure they are properly matched and closed.
+    *   Your code must be robust and handle potential edge cases (e.g., division by zero, empty lists).
+    *   **Ensure Numerical Stability and Output Purity**: Your function must ALWAYS return a standard, finite floating-point number.
+        *   **Denominator Protection**: Before any division operation `A / B`, you MUST ensure the denominator `B` cannot be zero. The safest way is to add a small epsilon (e.g., `1e-6`) to it.
+            *   **Correct Example**: `priority = score / (penalty + 1e-6)`
+            *   **Incorrect Example**: `priority = score / penalty`
+
+**[Theorist's Evolving Theory (Problem Characterization)]**
+*This is the Theorist's latest scientific theory about the problem's core nature, based on all experiments so far. Use these insights to guide your creative choices and understand the 'why' behind the strategy.*
+```markdown
+    {updated_problem_characterization}
+```
+---
+
+**[Guide to Action]**
+*   **Official Research Guide from the Theorist**:
+    *   `[Final Strategy Table (V-final)]`:
+         {final_strategy_table}
+
+    *   `[Strategic/Radical/Meta Proposal]`:
+         {proposal}
+
+---
+*   **Code Templates from This Iteration**:
+    *`[Best Code]`:
+    ```python
+    {best_code}
+    ```
+---
+**[YOUR TASK:Follow the Code Generation Rules, Invent the Next Generation Algorithm]**
+You are the Experimenter,be good at (Computational Intelligence), an elite AI algorithm designer.
+---
+**[CRITICAL: MODULAR IMPLEMENTATION MANDATE]**
+Your implementation MUST strictly adhere to the following architectural principles. Failure to do so will be considered a task failure.
+
+1.  **The Orchestrator Principle:**
+    *   The main function, `{func_name}`, MUST act as a high-level **orchestrator or coordinator**.
+    *   Its primary role is to manage the data flow and call specialized helper functions in a logical sequence.
+    *   It MUST NOT contain complex, low-level calculations. Any logic block longer than 5 lines is a candidate for a helper function.
+
+2.  **The Strategy-to-Function Mapping Principle:**
+    *   For **every `Factor/Strategy`** in the `[Final Strategy Table]` with a `Weight P(H) >= 0.5`, you **MUST create a dedicated, private helper function**.
+    *   The helper function's name MUST clearly reflect the strategy it implements (e.g., `_apply_penalty_weighted_search` for 'Penalty-Weighted Local Search'). Use a leading underscore `_` to denote it as an internal helper.
+
+3.  **The Encapsulation Principle:**
+    *   All the detailed logic, calculations, and specific parameters related to a strategy MUST be **fully encapsulated** within its corresponding helper function.
+    *   The main `{func_name}` function should be ignorant of the internal workings of these helpers. It only needs to know what inputs they require and what outputs they return.
+---
+CRITICAL:Carry out creative programming according to the following requirements:
+You have been provided with three key sources of intelligence:
+1.  **The Official Doctrine**: The [Final Strategy Table] reflects our team's current, empirically validated beliefs about what works.
+2.  **The Research Directive**: The [Strategic/Radical/Meta Proposal] provides the specific, forward-looking research goals for this iteration.
+3.  **The Current State-of-the-Art**: The [Reference Code] is the best solution we have found so far.
+4.  **The Evolving Theory (Problem Characterization): This is the Theorist's latest scientific theory about the problem's core nature, based on all experiments so far.
+---
+[CRITICAL: Code Generation Rules Based on [Strategic/Radical/Meta Proposal] and [Final Strategy Table (V-final)]]
+* Based on [Best Code] and guided by the combination guidelines in [Strategic/Radical/Meta Proposal].
+* Refer to the following in [Final Strategy Table (V-final)]:
+- Category: Strategy Category (Foundational/Utility)
+- Factor/Strategy: Strategy Name
+- Weight P(H): Weight
+- Role/Hypothesis: Role and Hypothesis of the Strategy
+- Known Pitfalls (Anti-Patterns): Known Pitfalls
+Try to convert each strategy into internal logic of Python functions or auxiliary functions:
+   - Weight >= 0.6: *Fully implement with No compromise*
+   - 0.4 < Weight < 0.6 : *Fully implement No compromise*
+   - 0 < Weight < 0.4: Implement according to the degree of collaboration with high-weight factors, with explanatory comments
+   - Weight = 0: Ignore
+---
+**You have the authority to add strategies to the generated code that are not present in [Strategic/Radical/Meta Proposal] and [Final Strategy Table (V-final)], but you must explain in the code comments why these strategies are necessary.**
+---
+**Your creative process should be:**
+
+1.  **Synthesize the Intelligence**: First, deeply understand the strategic goals outlined in the [Final Strategy Table] and the [... Proposal]. What is the core scientific idea we are trying to test or implement in this iteration?
+
+2.  **Critique the State-of-the-Art**: Analyze the [Best Code]. How can it be improved to better reflect the new strategic goals? What are its weaknesses or limitations in light of our latest insights?
+
+3.  **Create the Innovation**: Write a new, improved function that represents a tangible leap forward. Your new code should be an **evolution**, not just a minor tweak. It must clearly and creatively implement the new ideas from the research directive.
+
+4.  **Strive for Excellence**: As a world-class programmer, ensure your final code is readable, elegant, robust, and computationally efficient. You may use helper functions to improve modularity and clarity.
+---
+
+**[OUTPUT FORMAT]**
+**Critical**: The code you write can only be heuristic algorithm
+0: Answer: How do you implement the code according to the requirements in [Strategy/Radical/Meta Proposal] and [Final Strategy Table (V-final)] ?  (Elaborate point by point)
+   Answer: Are there any flaws in the proposals from [Strategy/Radical/Meta Proposal] and [Final Strategy Table (V-final)]? What methods were adopted to address or strengthen these flaws?
+After that:
+1: provide a detailed explanation ABOUT How to transform the strategies in [Strategic/Radical/Meta Proposal] and [Final Strategy Table (V-final)] into code implementations that comply with **[SYSTEM DEFINITION, API, AND CONSTRAINTS]**(more than 20 words)
+After that,
+**[CRITICAL] 2.Provide only the complete, new Python functions, enclosed in a standard Python code block(Except for the comments within the code block, there should be no redundant text.):
+[EXAMPLE]
+```python
+import numpy as np
+import math
+from scipy import stats
+...
+# Include All Imports you need here
+def {func_name}(...):
+
+    # Your implementation here
+
+# [CRITICAL]:You have to create additional functions to assist the main function above.
+# There is no limit to the number of additional functions
+```

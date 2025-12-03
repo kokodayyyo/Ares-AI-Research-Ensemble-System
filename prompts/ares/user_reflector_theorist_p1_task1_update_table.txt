@@ -1,0 +1,68 @@
+---
+[Prime Directive]
+You MUST always ground reasoning in the **7 Principles of Heuristic Design**:
+- Explosion, Proxies, Randomness, Balance, Architecture, Adaptation, Robustness.
+---
+---
+{user_generator_context}
+---
+You are the Theorist to solve the problem of Heuristic Algorithms. Your task is to analyze the latest code and update your strategic beliefs.
+All research is in the service of generating heuristic algorithms.
+---
+[Prior Beliefs - Strategy Table from Last Iteration]
+{prior_strategy_table}
+---
+[New Evidence - Key Code Samples from This Iteration:Used for comparison]
+*   **[Best Code]**:
+```python
+{best_code}
+```
+*   **[Worst Code]**:
+```python
+{worst_code}
+```
+---
+**[Weight Update Rules for a Unified Paradigm]**
+
+Our research is now focused on **optimizing the implementation** of our core "The Nature of Heuristic Algorithms" philosophy. Your task is to update weights based on a **detailed comparison of the specific implementations** in the code examples.
+
+**1. The Principle of Superior Implementation:**
+*   The primary driver for all weight changes is the **demonstrably superior or inferior implementation of a factor** in the `[Best Code]` compared to the `[Worst Code]`.
+*   You MUST identify the **specific lines of code or algorithmic choices** that lead to the performance difference.
+
+**2. Precise, Symmetric Weight Adjustments:**
+- **Strong Positive Evidence:** When `[Best Code]` demonstrates a clear, substantial improvement over `[Worst Code]` (e.g., vectorization, algorithmic optimization, better handling of constraints), increase weight by **+0.20 to +0.40**, And write specific improvement implementation measures in **Role/Hypothesis**.
+- **Moderate Positive Evidence:** Noticeable but not transformative improvements (e.g., parameter tuning, minor edge case handling) warrant **+0.10 to +0.20**.
+- **Weak Positive Evidence:** Minor, subtle improvements justify **+0.05**.
+- **Strong Negative Evidence:** Removal of a complex implementation that was detrimental should lead to a **-0.25 to -0.50** reduction in weight.
+- **Moderate Negative Evidence:** Simplifications that slightly degrade performance warrant **-0.15 to -0.25**.
+- **Weak Negative Evidence:** Small regressions justify **-0.05 to -0.10**.
+
+**3. Handling "Implementation as a Factor":**
+*   If you identify a new, successful **engineering principle** in the `[Best Code]` (e.g., `Vectorized Implementation`, `Robust Exception Handling`), you may add it as a new factor under the `Implementation` category with an initial weight of **0.70 to 0.75**.
+*   If you find a new element in the **[Worst Code]** that has the potential to optimize the current framework, you may add it as a new factor under the `Implementation` category with an initial weight of **0.5**.
+
+**4. Justification and Formatting:**
+*   You MUST justify every weight change by **quoting or describing the specific code difference** in the `Role/Hypothesis` or `Known Pitfalls` column.
+*   In the "Weight P(H)" column, show the calculation, for example: `0.60 (-0.10)`.
+---
+
+
+**[Your ONLY Task]**
+*   Compare the Best and Worst code, Analyze what the optimal code did right and what the worst code did wrong.
+*   Analyze the logical and performance flaws in [Best Code]
+*   Update the `Weight P(H)` and `Known Pitfalls` columns in the strategy table to reflect your new understanding.
+*   Add the new Factor/Strategy you gained in this round and update the `Weight P(H)` and `Known Pitfalls` columns in the table.
+*   Your analysis should be grounded in the direct comparison between the Best and Worst code implementations.
+
+
+**[Output Format]**
+
+Your entire response MUST be a **single block of text** that contains the following two sections, in this exact order, with these exact titles. DO NOT add any other text outside of these sections.
+
+**1. [Final Strategy Table]**
+```markdown
+| ID | Category | Factor/Strategy | Weight P(H) | Role/Hypothesis | Known Pitfalls (Anti-Patterns) |
+|---|---|---|---|---|---|
+| ... | ... | ... | ... | ... | ... |
+```

@@ -1,0 +1,42 @@
+#You must introduce the following core libraries at the beginning
+import numpy as np
+import math
+import scipy
+import torch
+
+def heuristics_v2(distance_matrix: np.ndarray, coordinates: np.ndarray, demands: np.ndarray, capacity: int) -> np.ndarray:
+    """
+    You have access to a rich scientific computing environment.
+    The following core libraries are available and recommended for use:
+
+    import numpy as np
+    import math
+    import scipy
+    import torch
+
+    Args:
+        distance_matrix (np.ndarray):
+            A 2D Numpy array of shape (n, n) where `distance_matrix[i, j]`
+            is the distance between location `i` and `j`. Location 0 is the depot.
+            `n` is the total number of locations (depot + customers).
+
+        coordinates (np.ndarray):
+            A 2D Numpy array of shape (n, 2) representing the Cartesian
+            coordinates (x, y) of each location. `coordinates[i]` gives the
+            [x, y] position of location `i`. `coordinates[0]` is the
+            position of the depot.
+
+        demands (np.ndarray):
+            A 1D Numpy array of shape (n,) where `demands[i]` is the demand of
+            customer `i`. `demands[0]` is always 0 for the depot.
+
+        capacity (int):
+            The uniform capacity of each vehicle.
+
+    Returns:
+        np.ndarray:
+            An n x n heuristic matrix. The value at `heuristic_matrix[i, j]`
+            should represent the desirability of traveling from location `i` to
+            location `j`. A higher value indicates a higher desirability. This
+            matrix will guide an Ant Colony Optimization (ACO) solver.
+    """

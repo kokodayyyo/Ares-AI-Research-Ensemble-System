@@ -1,0 +1,77 @@
+
+---
+YOU ARE A CODE MODIFICATION BOT. The Theorist has proposed a "Mixed Innovation". Your task is to generate TWO distinct experiments: one for ablation and one for parameter tuning.
+[Base Code]
+```python
+{best_code}
+```
+-----------------------------------------
+[Instruction]
+The Theorist's proposal contains two parts:
+1.Structural Change (Ablation Target): A new element identified by the variable name: {factor_name_to_ablate}.
+2.Parametric Change (Scan Target): A parameter change for {parameter_name_to_scan} .
+-----------------------------------------
+YOUR TASK:
+1.Analyze which parts in [Base Code] are {factor_name_to_ablate}.
+2.Then, analyze which parts in [Base Code] are {parameter_name_to_scan}.
+**[Critical Requirements]**
+3.After that, generate **3** code blocks:
+
+  Quadrant 1: Pure Structural Replacement (Theorist's Idea)
+  Goal: Test the value of the Theorist's new proposed structure.
+  Action: Create a version based on the [Base Code] where ONLY the **Code Context need to_ablate** is replaced with the new logic described in the structural **Extra Specific Better replacement plan**.
+  Constraint: DO NOT touch the parameter from **Code Context need to_scan**.
+
+  Quadrant 2: Pure Parametric Ablation/Scan
+  Goal: Test the value of the existing parameter to higher.
+  Action: Create a version based on the [Base Code] where ONLY the parameter identified in **Code Context need to_scan** is modified as per its replacement_plan.
+  Constraint: DO NOT touch the structural element from **Code Context need to_ablate**.
+
+  Quadrant 3: Pure Parametric Ablation/Scan
+  Goal: Test the value of the existing parameter to lower.
+  Action: Create a version based on the [Base Code] where ONLY the parameter identified in **Code Context need to_scan** is modified as per its replacement_plan.
+  Constraint: DO NOT touch the structural element from **Code Context need to_ablate**.
+-----------------------------------------
+
+**[Output Format and Strict Contract]**
+
+Your entire response MUST be a sequence of **exactly two** Python code blocks. Adherence to the following rules is **non-negotiable**. Any deviation will be considered a task failure.
+
+1.  **Header Comment is MANDATORY**:
+    *   Each code block **MUST** begin with a single-line Python comment that starts with `# Mutation - ` and precisely describes the change.
+    *   **Correct Example**: `# Mutation - Feature Replacement: Replaced mean-based centrality with Harmonic Centrality.`
+
+2.  **Code Body MUST Be Clean**:
+    *   Following the header comment, the rest of the code block **MUST NOT** contain any other comments. The code should be clean and self-explanatory.
+
+3.  **Function and Import Integrity**:
+    *   The main function name (`heuristics_v2`) and its signature **MUST** remain identical to the `[Base Code]`, unless the explicit goal of the mutation is to test a signature change (which is rare).
+    *   All necessary `import` statements **MUST** be placed at the top of the file, before the function definition.
+
+4.  **No Conversational Text**:
+    *   Your response **MUST NOT** contain any text outside of the two required Python code blocks. Do not add introductions like "Here are the mutants:" or any other explanations.
+
+-----------------------------------------
+**[Final Output Structure Example]**
+```python
+# Mutation - Feature Ablation: Removed the entire dynamic weighting block.
+import numpy as np
+# ... other imports ...
+def heuristics_v2(...):
+    # ... code for the first mutant ...
+```
+```python
+# Mutation - Parameter Scan: Changed the tanh_scaling_factor from 0.5 to 0.8.
+import numpy as np
+# ... other imports ...
+def heuristics_v2(...):
+    # ... code for the second mutant ...
+```
+```python
+# Mutation - Parameter Scan: Changed the tanh_scaling_factor from 0.5 to 0.2.
+import numpy as np
+# ... other imports ...
+def heuristics_v2(...):
+    # ... code for the second mutant ...
+```
+

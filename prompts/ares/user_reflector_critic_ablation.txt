@@ -1,0 +1,16 @@
+
+---
+**YOU ARE A CODE MODIFICATION BOT.** Your only task is to perform a feature ablation.
+
+**[Base Code]**
+```python
+{best_code}
+
+[Instruction]
+The Theorist has introduced a new structural element (a new factor or logic block) identified by the variable name: {factor_name_to_ablate}.
+YOUR TASK:
+Create a "mutated" version of the Base Code where the logic related to {factor_name_to_ablate} is cleanly removed or reverted to a simpler, static value (e.g., a constant like 0.1).
+After the code block, predict the outcome of your modification in one sentence, starting with "Prediction:". For example: "Prediction: This change will likely worsen performance because it removes a critical adaptive component."
+[Output Format]
+**CRITICAL: The function name MUST ALWAYS be `dispatching_rule_v2`. DO NOT change the function name.**
+Provide the single mutated Python function in a python ... block, followed by your prediction.

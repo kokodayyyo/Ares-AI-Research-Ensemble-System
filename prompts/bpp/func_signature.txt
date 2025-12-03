@@ -1,0 +1,34 @@
+#You must introduce the following core libraries at the beginning
+import numpy as np
+import math
+import scipy
+import torch
+
+def heuristics_v2(demands: np.ndarray, capacity: int) -> np.ndarray:
+    """
+    You have access to a rich scientific computing environment.
+    The following core libraries are available and recommended for use:
+
+    import numpy as np
+    import math
+    import scipy
+    import torch
+
+    Args:
+        demands (np.ndarray):
+            A 1D Numpy array of integers representing the size (or "demand")
+            of each item to be packed. For example, `demands[i]` is the
+            size of item `i`.
+
+        capacity (int):
+            An integer representing the uniform capacity of each bin. All bins
+            are identical and have this maximum capacity.
+
+    Returns:
+        np.ndarray:
+            An n x n heuristic matrix where n is the number of items.
+            The value at `heuristic_matrix[i, j]` should represent the
+            desirability of placing item `j` into a bin that currently
+            contains item `i` (or was the last item placed). A higher
+            value indicates a higher desirability.
+    """

@@ -1,0 +1,6 @@
+[1. The Nature of the Problem: Core Concepts & Trade-offs]
+The Multiple Knapsack Problem (MKP) is a challenging NP-hard generalization of the classic knapsack problem.
+It revolves around the core conflict between item efficiency (Exploitation) and resource allocation (Exploration).
+
+This heuristic function calculates the desirability of items for a multi-dimensional knapsack problem by considering both the prize-to-weight ratios across dimensions and the capacity utilization constraints.
+It normalizes weights by capacity constraints and computes weighted average ratios to prioritize items that offer high value with relatively low resource consumption across all dimensions.

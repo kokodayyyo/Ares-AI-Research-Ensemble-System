@@ -1,0 +1,48 @@
+Design a core function:
+Used in Combinatorial optimization:
+ This code is a core function in heuristic optimization algorithms, mainly used for updating the positions of Search Agents, helping the algorithm find better solutions in the solution space.
+Specifically, its function is: in each iteration, all search agents adjust their positions according to the currently found "best position" (Best_pos).
+The function you guide to design can only access the variables in the following template and return the required variables.
+Args:
+        Positions (np.ndarray):
+            A 2D Numpy array of shape (SearchAgents_no, dim), representing the
+            current positions of all search agents in the population.
+
+        Best_pos (np.ndarray):
+            A 1D Numpy array of shape (dim,), representing the position of the
+            best solution found so far across all iterations.
+
+        Best_score (float):
+            The fitness score of the `Best_pos`. A lower score is better.
+
+        rg (float):
+            A dynamic "radius" or "range" parameter that typically decreases
+            over iterations. It controls the balance between global exploration
+            (when `rg` is large) and local exploitation (when `rg` is small).
+
+        detailed variable description:
+        1. Positions (Search Agent Position Matrix):
+        - Dimension: dim = num_materials * num_students (e.g., dim = 3600 for 120 materials and 30 students, as 120*30=3600);
+        - Value range for each dimension: [0.0, 1.0] (position coordinates clipped to this range to ensure feasibility, corresponding to material selection probability for each student);
+        - Interpretation: Each element represents the selection tendency of a specific material for a specific student (values >=0.5 are treated as selected in f_obj calculation).
+
+        2. Best_pos (Global Optimal Position Vector):
+        - Dimension: Consistent with Positions (dim = num_materials * num_students = 3600);
+        - Value range for each dimension: [0.0, 1.0] (same as Positions, maintained through boundary handling in heuristic functions);
+        - Additional constraints: Must be a feasible solution satisfying "material quantity limits (3 high-priority, 6 medium-priority, 1 challenge per student) + total time within student's time limit + goal coverage requirements" (no explicit numerical range, but must meet these constraints to avoid heavy penalties in f_obj).
+
+        3. Best_score (Global Optimal Score):
+        - Basic range (feasible solutions): Usually several tens to several hundreds, depending on the degree of excess coverage, preference differences, etc. (calculated from 0.25*excess coverage + 0.25*preference difference);
+        - Range with penalties (infeasible solutions): >=1000, with higher values when multiple constraints are violated (due to 1e4 * uncovered goals penalty + 1000 * time violation penalty, superimposed with other penalties).
+
+        4. rg (Iteration Progress Parameter):
+        - Initial value: 2.5 (supports early-stage global exploration);
+        - Decay range: [0.1, 2.5] (decays linearly with iteration, not lower than 0.1 in later stages to retain basic exploration capability);
+        - Stage correspondence: Exploration phase [0.6, 2.5] (facilitates large-scale search), Optimization phase [0.1, 0.5] (focuses on local refinement of promising regions).
+
+    Returns:
+        np.ndarray:
+            A new 2D Numpy array of shape (SearchAgents_no, dim), representing
+            the **updated positions** of all search agents for the next iteration.
+
+    """

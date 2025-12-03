@@ -1,0 +1,71 @@
+---
+Core Analysis of the Dynamic Job Shop Scheduling (Dynamic JSS) Problem
+Dynamic Job Shop Scheduling (Dynamic JSS) is a classic NP-hard combinatorial optimization problem in discrete manufacturing. Its core challenge lies in balancing Local Scheduling Efficiency (Exploitation) and Global Production Harmony (Exploration) while dealing with real-time disruptions finding the optimal trade-off between optimizing individual resources and meeting system-wide goals.
+1. Local Scheduling Efficiency (Exploitation)
+This focuses on optimizing single machines or immediate production steps to boost short-term resource use amid sudden changes. For example assigning the shortest compatible operation to an idle machine after a previous task ends earlier than planned. However overprioritizing this can backfire. If a bottleneck machine such as a high-precision grinder is constantly given short tasks to avoid idleness when a new urgent order arrives critical long tasks such as final processing for large batches get delayed. This stalls downstream machines lengthens the total production cycle (makespan) and increases order tardiness.
+2. Global Production Harmony (Exploration)
+This prioritizes the entire production system considering connections between all jobs operations and machines even if it means temporary local inefficiencies especially when facing dynamic disruptions. For instance leaving a bottleneck machine idle briefly to prioritize high-impact long tasks after a machine breakdown to avoid congestion or splitting operations across two non-bottleneck machines allowing slight idleness when new jobs arrive suddenly to prevent overloading and new bottlenecks. This keeps the whole flow smooth amid real-time changes.
+---
+### **[1. Core Requirements & Constraints]**
+
+**Function Signature:**
+The function MUST have the exact signature: `def heuristics_v2(simulation_env, operation):`
+
+**Core Task:**
+You will calculate a numerical priority score for a single candidate `operation`. The simulation engine uses `max()` to select the operation with the highest score. **A higher return value MUST signify a higher priority.**
+
+**Permitted Imports:**
+At the top of your function, you MUST include the following imports. No other libraries are permitted.
+```python
+***
+    from simulation_env import SimulationEnv
+    from job_shop_model import Operation
+    import numpy as np
+    import math
+***
+
+CRITICAL CONSTRAINT: API Usage
+Your function must be self-contained. All necessary tools are provided via the simulation_env and operation arguments. Incorrect API usage is a critical failure.
+
+### **[2. The Official API Documentation]**
+You can ONLY use the data provided through the arguments and their specified methods/attributes.
+simulation_env argument: An object of class SimulationEnv. This is your window into the state of the workshop. You can reliably use:
+simulation_env.env.now: (float) The current simulation time.
+simulation_env.machines[machine_id].release_time: (float) The future time at which a specific machine will become free. This is a key indicator of machine load.
+simulation_env.machines[machine_id].queue: (list) A list of Operation objects currently waiting for this machine. You can get the queue length via len().
+simulation_env.get_work_in_next_queue(operation) (WINQ): Returns the float total work content waiting in the queue of the next machine in the sequence. A very powerful look-ahead feature.
+simulation_env.get_next_processing_time(operation) (NPT): Returns the float processing time of the next operation in the sequence.
+Helper Method 1: simulation_env.get_operations_remaining(operation): Returns the integer count of operations remaining for the given operation's job.
+Helper Method 2: simulation_env.get_work_remaining(operation): Returns the total processing time for all remaining operations in the job.
+operation argument: An object of class Operation. You can reliably access:
+operation.processing_time: (float) The fixed processing time for this specific operation.
+operation.machine_id: (int) The ID of the machine required for this operation.
+operation.job.arrival_time: (float) The time at which this operation's parent job entered the system.
+operation.job.operations: A list of all operations belonging to the parent job.
+operation.job.due_date: (float) The time by which this entire job is expected to be completed. Crucial for tardiness-based rules.
+operation.get_next_operation(): A method that returns the next Operation object in the sequence, or None if this is the last one.
+
+
+#### **API USAGE EXAMPLES & BEST PRACTICES** ####
+
+    *   **CORRECT USAGE for accessing a single machine:**
+        ```python
+        machine_object = simulation_env.machines[operation.machine_id]
+        release_time = machine_object.release_time
+        queue_length = len(machine_object.queue)
+        ```
+
+    *   **CORRECT USAGE for iterating over ALL machines:**
+        To calculate system-wide metrics, you **MUST** iterate over the dictionary's **values**.
+        ```python
+        # CORRECT WAY to get total system-wide queue length:
+        total_queue_length = 0
+        for machine_object in simulation_env.machines.values():
+            total_queue_length += len(machine_object.queue)
+
+        # --- COMMON MISTAKE (DO NOT DO THIS) ---
+        # for machine_id in simulation_env.machines:
+        #     # This will cause an AttributeError because machine_id is an integer!
+        #     total_queue_length += len(machine_id.queue)
+        ```
+---

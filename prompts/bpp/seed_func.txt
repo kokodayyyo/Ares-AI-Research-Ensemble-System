@@ -1,0 +1,31 @@
+import numpy as np
+import math
+
+def heuristics_v2(demands: np.ndarray, capacity: int) -> np.ndarray:
+    """
+    A simple and robust seed heuristic for the Bin Packing Problem.
+    It implements the core idea of "First Fit Decreasing" (FFD) by
+    assigning a higher priority to larger items.
+
+    Args:
+        demands (np.ndarray): A 1D array of item sizes.
+        capacity (int): The capacity of each bin.
+
+    Returns:
+        np.ndarray: An n x n heuristic matrix where the value at (i, j)
+                    represents the priority of placing item j next.
+    """
+
+    n = demands.shape[0]
+    epsilon = 1e-9
+
+
+    item_priority = demands.astype(float) / capacity
+
+    heuristic_matrix = np.tile(item_priority, (n, 1))
+
+
+    np.fill_diagonal(heuristic_matrix, 0)
+    heuristic_matrix[heuristic_matrix < epsilon] = epsilon
+
+    return heuristic_matrix

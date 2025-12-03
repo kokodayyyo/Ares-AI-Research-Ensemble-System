@@ -1,0 +1,18 @@
+Core Content of ACS (Course Material Allocation and Scheduling Optimization System)
+I. Basic Information
+Positioning: An intelligent matching tool for students and course materials in educational scenarios, solving the problems of low efficiency in manual recommendation and numerous constraint conflicts.
+Core Goal: Find the optimal recommendation scheme in the high-dimensional search space (students x materials) to minimize "constraint violation penalties + personalized deviation penalties".
+Form of Solution:
+Intermediate Representation: A probability vector with dimensions = number of students x number of materials (30 students x 120 materials -> dimension = 3600, where the value is the recommendation probability).
+Final Output: A binary matrix where a value >= 0.5 indicates "recommended", sorted by high (core goal), medium (auxiliary), and challenge (expansion) priorities.
+Data Foundation: Student data (abilities, time range, learning goals, preferences), material data (covered concepts, difficulty, time consumption, attributes).
+II. Constraint System (Hard Constraints + Soft Constraints)
+1. Hard Constraints (Non-violable, High Penalty)
+Material Quantity: Each student can have at most 3 high-priority, 6 medium-priority, and 1 challenge-level material; a penalty of 1000 is imposed for each extra material.
+Time Limit: The total time consumption of recommended materials must be within the student's time upper and lower limits; a penalty of 500 is imposed for each hour below the lower limit, and a penalty of 1000 for each hour exceeding the upper limit.
+Goal Coverage: 100% coverage of students' core learning goals; a penalty of 10000 is imposed for each uncovered goal.
+Difficulty Matching: The difference between the material difficulty and the student's ability must be <= 1 (<= 2 for challenge-level materials); a penalty of 800 is imposed for each mismatched material.
+2. Soft Constraints (Improve Quality, Light Penalty)
+Preference Matching: Minimize the preference deviation between students and materials, with a penalty of deviation value * 0.25.
+Excess Coverage: The coverage of non-core goals must be <= 50% of core goals; a penalty of 0.25 is imposed for each excess goal.
+Material Diversity: A single type of material must be <= 60% of the total recommended materials; a penalty of 0.1 is imposed for each 1% excess.

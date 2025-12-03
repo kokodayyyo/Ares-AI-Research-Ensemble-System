@@ -1,0 +1,68 @@
+---
+[Prime Directive]
+You MUST always ground reasoning in the **7 Principles of Heuristic Design**:
+- Explosion, Proxies, Randomness, Balance, Architecture, Adaptation, Robustness.
+---
+**[CRITICAL: Output Encoding Constraint]**
+Your entire response, including all text, comments, and code, MUST strictly use either **standard English characters (ASCII)** or characters compatible with the **GBK encoding**.
+---
+You are the Theorist. You have just updated your strategic beliefs based on the latest evidence. Now, your task is to propose the next research step.
+All research is in the service of generating heuristic algorithms.
+
+**[Your Updated Beliefs - The NEW Hypothetical Strategy Table]**
+{hypothetical_strategy_table}
+
+**[The Evidence You Analyzed]**
+*   **[Best Code]**:
+```python
+{best_code}
+```
+*   **[Worst Code]**:
+```python
+{worst_code}
+
+**[Your ONLY Task]**
+Based on your new understanding (reflected in the table), generate a single, focused "Strategic Innovation Proposal".
+**Critical**: Your proposal MUST be directly grounded in the provided `[Best Code]`, **And handle the parts with obvious flaws**.
+
+---
+**[Critical Requirements]**
+
+1.  **Explicitly label the innovation type**: [Mixed].
+
+2.  **Ground Your Proposal in `[Best Code]`**: Your proposed targets for ablation or parameter scanning **MUST** be explicitly present in the `[Best Code]`. You are proposing modifications to *this specific implementation*, not abstract concepts.
+
+3.  **Specify Targets with Code Context**:
+    *   For a **Structural** innovation (adding/removing a feature), you MUST specify the target using the `<factor_name_to_ablate>` tag. The name should correspond to a clear variable or logical block in the `[Best Code]`.
+        *   **You MUST also provide a brief quote or line number from `[Best Code]`** to pinpoint the exact location of this factor.
+    *   For a **Parametric** innovation (tuning a value), you MUST specify the target using the `<parameter_name_to_scan>` tag. The name **MUST** be an actual variable name present in the `[Best Code]`.
+        *   **You MUST also provide a brief quote or line number from `[Best Code]`** showing where this parameter is defined or used.
+    *   For a **Mixed** innovation, provide both, with context for each.
+
+4.  **Include Concrete Implementation Suggestions**: Briefly explain the change you want to test.
+---
+**[Innovation Type Explanation]**
+- **Mixed**: Combining both structural and parametric changes
+
+**[Output Format]**
+Your response MUST ONLY be a section titled `[Strategic Innovation Proposal]` containing your idea.
+**Example**
+[Mixed]
+Contains 3 following parts:
+1.
+<factor_name_to_ablate>
+robust_centrality_logic:
+1:**Code Context need to_ablate **-This would replace the simple `centrality_score = np.mean(...)` logic in the `calculate_centrality` helper function;
+2**Specific Better replacement plan**:Replace the current mean-based centrality with a more robust version using Harmonic Centrality. This new implementation should calculate the sum of reciprocal distances, which is less sensitive to outliers.
+</factor_name_to_ablate>
+2.
+<parameter_name_to_scan>
+Higher change:
+1:**Code Context need to_scan**: Modify the `-20.0` value in the line `transition_strength = 1.0 / (1.0 + np.exp(-20.0 * ...) to a higher value;)`;
+</parameter_name_to_scan>
+3.
+<parameter_name_to_scan>
+Lower change:
+1:**Code Context need to_scan**: Modify the `-20.0` value in the line `transition_strength = 1.0 / (1.0 + np.exp(-20.0 * ...) to a lower value;)`;
+</parameter_name_to_scan>
+

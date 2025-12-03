@@ -1,0 +1,20 @@
+Optimization of Wireless Sensor Network (WSN)
+It is a tool for optimizing the configuration of Cluster Nodes (CNs). Its core goal is to search for the optimal cluster head deployment scheme in the solution space through heuristic algorithms, so as to minimize the total power consumption of the network while satisfying key constraints such as sensor coverage and cluster head connectivity.
+
+# Analysis of WSN Solution Structure
+The analysis focuses on the structural characteristics of valid WSN optimization solutions and their implications for heuristic design covering five core aspects.
+
+## 1. Solution Form
+The WSN solution is a hybrid of physical parameter assignment and high-dimensional vector different from classic problems like TSP Bin Packing or Job Shop Scheduling. A solution is encoded as a high-dimensional vector where dim equals the number of Cluster Nodes multiplied by three. For example 50 CNs correspond to a 150-dimensional vector. Each set of three consecutive dimensions maps to one CNs physical parameters including X coordinate Y coordinate and transmit power. Every dimension value directly reflects a physical state of CN deployment such as X=20 meaning the CN is at the 20th unit in the horizontal direction.
+
+## 2. Subcomponent Properties
+The subcomponents of a WSN solution are CN parameter groups of X Y and power. These subcomponents are brittle and context dependent. A single CNs parameters are only valid under specific contexts like nearby Sensor Node distribution and adjacent CN configuration. If SN positions shift or adjacent CNs adjust power the original parameters may fail. The solution can be decomposed into smaller blocks but these blocks cannot be optimized independently. Adjusting one CNs power for example requires checking coverage overlap and connectivity with adjacent CNs to avoid constraints violations.
+
+## 3. Constraints & Dynamics
+WSN optimization is dominated by hard constraints with no soft constraints. The hard constraints include all 200 SNs must be covered by at least one CN the signal strength must meet SNs sensitivity threshold of -85.0 dBm all 50 CNs must form a connected network and each CN can cover at most 15 SNs. The environment is static. SN positions CN count and communication range are fixed before optimization. No new data like SN failures or new node additions emerges during optimization so the algorithm only searches for optimal solutions for a fixed instance.
+
+## 4. Search Space Complexity
+The WSN search space grows exponentially with the number of CNs making brute force enumeration completely infeasible. Assuming each CNs X Y coordinates have 50 discrete values and transmit power has 30 discrete values the search space for 50 CNs is extremely large. Even for 3 CNs the space size reaches 7.5*10^4 and for 150 dimensions it is computationally intractable. Heuristic algorithms are mandatory to compress the search scope whether values are discrete or continuous.
+
+## 5. Evaluation Cost
+Evaluating a single candidate solution has moderate and manageable costs. It involves three core steps including SN CN distance matrix computation path loss calculation and coverage verification and CN connectivity check. The time complexity of a single evaluation is approximately O(10^4). Even for a heuristic algorithm with 100 iterations and 50 search agents per iteration the total evaluation cost is only O(5*10^5) which is controllable. No proxy metrics are needed and the true fitness including total power consumption and constraint penalties can be computed directly.

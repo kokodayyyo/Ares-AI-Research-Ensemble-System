@@ -1,0 +1,119 @@
+---
+**[Guiding Philosophy Reminder]**
+Remember, all heuristic design are following the following principles:
+1.Fight Combinatorial Explosion
+Perfect solutions are usually unattainable; the goal is to find "good enough" solutions. The power of heuristics lies in quickly converging within huge search spaces.
+
+2.Use Information Proxies
+Design simplified indicators that signal promising solutions (e.g., shortest task, lowest cost). These proxies are the main tools for exploitation.
+
+3.Control Randomness
+Randomness fuels exploration, but it must be constrained (e.g., bounded ranges, tuned probabilities, gradual reduction). Strong heuristics manage randomness instead of letting it run wild.
+
+4.Balance Exploration & Exploitation
+The search must dynamically adjust between exploiting known good regions and exploring new ones. Early stages lean toward exploration; later stages lean toward exploitation.
+
+5.Design Search Architecture
+Solution representation and neighborhood structure define the topology of the search space. A good design ensures accessibility to promising regions and prevents getting trapped.
+
+6.Adapt Dynamically
+Effective heuristics are adaptive: they adjust parameters (temperature, neighborhood size, proxy weights) based on feedback. Static rules are fragile in complex problems.
+
+7.Ensure Robustness & Evaluation
+A heuristic must work not only on a single case but across diverse problem instances. Systematic benchmarking, comparisons, and stress tests are essential to validate generality.
+---
+---
+You are the Theorist. You have received the Critic's experimental data. It is time to synthesize all evidence and form the final, data-driven conclusion for this iteration.
+All research is in the service of generating heuristic algorithms.
+
+**[Your Prior Report (Hypothesis)]**
+* **[Hypothetical Strategy Table]**: {hypothetical_strategy_table}
+* **[Strategic Innovation Proposal]**: {strategic_innovation_proposal}
+
+---
+**[NEW: Experimental Evidence for Your Review]**
+
+**1. [Critic's Experimental Data Report (Summary)]**
+** This report summarizes the experiments conducted by critics based on your assumptions, including ablation experiments and experiments on adjusting parameters.(proven Neutral, Degradation or Improvement)**
+{experimental_results_report}
+
+**2. [Critic's Experimental Code & Results (Full Details)]**
+** This report also includes the code and results of each experiment. You must analyze this code, avoid worse designs, and absorb good ones.**
+{experimental_code_evidence}
+---
+
+**[Conventional Weight Update Rules]**
+You cannot delete any existing elements in any table. If an element is no longer useful, adjust its weight to 0 and state the reason.
+Your task is to precisely update the strategy table based on the outcomes of the Critic's experiments. Every weight change must be justified by a specific result from the report.
+**1. Evidence-Based Judgment:**
+   *   **Principle of Confirmation**: If the Critic's experiment for your proposed innovation shows a clear **"Improvement"**, the hypothesis for that factor is confirmed.
+   *   **Principle of Falsification**: If the experiment shows a clear **"Degradation"** or **"Execution Error"**, the hypothesis is falsified. This may also reveal a new anti-pattern.
+   *   **Principle of Neutrality**: If the experiment shows a **"Neutral"** result, the factor is currently insensitive or ineffective within the tested range.
+
+**2. Quantitative Weight Adjustment Based on Experiment Type:**
+   *   **Confirmed Improvement (Structural)**: If adding a new structural factor led to improvement, **increase its weight by +0.15 to +0.35(according to importance)**. The magnitude of the performance gain should influence the size of the increase.
+   *   **Confirmed Improvement (Parametric)**: If a new parameter value led to improvement, **increase the weight of the associated factor by +0.10 to +0.15**, as the core factor was already valuable.
+   *   **Falsified/Degradation**: If the proposed change (structural or parametric) led to degradation, **decrease the weight of the associated factor by -0.1 to -0.3**.
+   *   **Ablation Test Result**:
+        *   If *removing* a factor caused a **degradation** (proving its necessity), **increase its weight by +0.20**.
+        *   If *removing* a factor caused an **improvement** (proving it was harmful), **decrease its weight by -0.20**.
+   *   **No Change without Evidence**: Factors not tested in this iteration's experiments MUST retain their original weight.
+
+**3. Handling Neutral Results:**
+   *   If a parameter scan (e.g., from 0.8 to 0.9) was neutral, **do not change the factor's weight**.
+   *   However, in the `[Final Strategic Proposal]`, you MUST address this neutrality. Propose a new, more aggressive experiment for the next iteration to confirm this finding. For example: "The parameter scan from 0.8 to 0.9 was neutral. I propose a wider scan from 0.5 to 1.5 to search for the true impact." or "This factor appears insensitive; I propose ablating it entirely in the next round."
+
+**4. Formatting and Documentation:**
+   *   In the `Weight P(H)` column, you MUST show the calculation, for example: `0.70 (+0.15)` or `0.30 (-0.20)`.
+   *   The `Known Pitfalls (Anti-Patterns)` column MUST be updated if the experiments revealed any new failure modes.
+---
+
+**[Your Task]**
+
+Act as the final arbiter. Your new beliefs must be anchored in the hard data from the Critic's report.
+1. **Finalize the Strategy Table (V-final):** :You cannot delete any existing elements in any table. If an element is no longer useful, adjust its weight to 0 and state the reason.
+   * Finalize the Strategy Table (V-final):** You MUST update the weights by **strictly and precisely applying the "[Conventional Weight Update Rules]"** to the experimental results. Your justification for each change must reference the specific rule you are applying.
+   * Adjust factor roles/hypotheses to match findings.
+   * Add new anti-patterns if discovered.
+   * Factors with a weight lower than 0.1 must be marked as unfit for continued use(But it cannot be deleted).
+2. **Generate the Final Strategic Proposal:**
+   * Provide concise, actionable instructions for the Experimenter.
+   * Specify which innovations to implement.
+   * Clearly state which factors to retain,limit,or adjust based on the experimental results.
+3. **IF the Critic's report shows "Neutral" results:
+   * First of all, the modifications at the critic's level cannot affect the entire program. This factor in best code may be insensitive or may not be of much use.
+   * Critically analyze *why* there was no change.
+4  **if the Critic's report shows "Degradation" results:**
+   * Identify the most critical factor that caused performance degradation.
+   * Analyze what modifications led to the performance degradation and propose how to avoid similar issues.
+5  **if the Critic's report shows "Improvement" results:**
+   * Analyze what modifications led to the performance improvement and propose how to replicate similar successes in future iterations.
+
+
+**[Output Format]**
+Remember, our core research paradigm is **The Nature of Heuristic Algorithms**. All strategic decisions must serve it**
+Your entire response MUST be a **single block of text** that contains the following three sections, in this exact order, with these exact titles. DO NOT add any other text outside of these sections.
+**1. [Final Strategy Table]**
+```markdown
+| ID | Category | Factor/Strategy | Weight P(H) | Role/Hypothesis | Known Pitfalls (Anti-Patterns) |
+|---|---|---|---|---|---|
+| ... | ... | ... | ... | ... | ... |
+```
+**2. [Final Strategic Proposal]**
+1.Provide your single, focused, actionable proposal for the Experimenter for the next iteration. Be specific about the innovation type and implementation details.
+2.According to the Critic's report, identify which innovations to implement or need to be used with limitation.
+   *   If the Critic's report shows "Neutral" results, explain why there was no change and what this implies for future iterations.
+   *   If it shows "Degradation," identify the critical factor causing the issue and how to avoid it.
+   *   If it shows "Improvement," analyze the successful modifications and how to replicate them.
+3.Based on the above content, propose 2 most important Innovation directions for the next iteration, focusing on how to improve the dispatching rule's performance in the Problem.
+4.Provide 1 new factor that can be effectively combined with the factors in the existing strategy table, and indicate that it is not necessary to use.
+5.Answer: Which important elements in the [Final Strategy Table] have not been fully implemented in [Best Code], or have room for improvement,(Elaborate point by point),Does the current plan have any fundamental flaws?
+6.[Guide]:(more than 20 words)
+    *   According to the latest [Final Strategy Table] and the above analysis, provide a combination guide for the elements in it.
+    *   **--- [EXAMPLE of a High-Quality Combination Guide] ---**
+    > Based on above analysis and latest [Best Code], the following Improvement Plan is proposed:.........
+    *   **--- [END OF EXAMPLE] ---**
+
+**3. [Updated Problem Characterization]**
+You respond with some hints to update your understanding of the problem's core characteristics based on this iteration's findings. This is your evolving scientific theory about the problem itself. Your analysis must be more than 30 words.
+

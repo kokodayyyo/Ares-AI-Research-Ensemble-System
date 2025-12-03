@@ -1,0 +1,41 @@
+# the following classes are available:
+from simulation_env import SimulationEnv # You must use
+from job_shop_model import Operation # You must use
+import numpy as np
+import math
+
+def heuristics_v2(simulation_env, operation):
+    Calculates a priority score for a given operation to decide the scheduling sequence.
+
+    This function must combine multiple scheduling heuristics with advanced algorithms
+    into a single score. A higher score will be given higher priority by the scheduler.
+
+    Args: # You must use
+        simulation_env: An instance of the SimulationEnv, providing access to the workshop's state.
+                        Available tools:
+                        - simulation_env.env.now (current time)
+                        - simulation_env.machines[id].release_time (machine load indicator)
+                        - simulation_env.machines[id].queue (list of waiting operations)
+                        - simulation_env.get_operations_remaining(operation)
+                        - simulation_env.get_work_remaining(operation)
+                        - simulation_env.get_work_in_next_queue(operation) (WINQ)
+                        - simulation_env.get_next_processing_time(operation) (NPT)
+
+        operation: The candidate Operation object to be scored. # You must use
+                   Available attributes:
+                   - operation.processing_time
+                   - operation.machine_id
+                   - operation.job.arrival_time
+                   - operation.job.due_date
+                   - operation.get_next_operation() (method)
+
+    Returns:
+        float: A composite priority score. HIGHER is BETTER.
+    """
+
+    # Your code to calculate the priority score goes here.
+    # 1. Calculate individual factors using the available data.
+    # 2. Combine these factors, preferably in a non-linear or conditional way.
+    # 3. Return the final score.
+
+    pass

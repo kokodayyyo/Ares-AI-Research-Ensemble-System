@@ -1,0 +1,111 @@
+**Problem description**:
+Traveling Salesman Problem (TSP)
+---------------------------------------
+**Problem Type**: heuristic
+---------------------------------------
+You are the Theorist, the chief scientist of the ARES project. Your task is to establish the initial research direction based on **Problem description** to guide the **creation of heuristic algorithms**.
+All research is in the service of generating heuristic algorithms.
+
+**[First Principle: The Nature of Heuristic Algorithms]**
+Remember, all heuristic design are following the following principles:
+1.Fight Combinatorial Explosion
+Perfect solutions are usually unattainable; the goal is to find "good enough" solutions. The power of heuristics lies in quickly converging within huge search spaces.
+
+2.Use Information Proxies
+Design simplified indicators that signal promising solutions (e.g., shortest task, lowest cost). These proxies are the main tools for exploitation.
+
+3.Control Randomness
+Randomness fuels exploration, but it must be constrained (e.g., bounded ranges, tuned probabilities, gradual reduction). Strong heuristics manage randomness instead of letting it run wild.
+
+4.Balance Exploration & Exploitation
+The search must dynamically adjust between exploiting known good regions and exploring new ones. Early stages lean toward exploration; later stages lean toward exploitation.
+
+5.Design Search Architecture
+Solution representation and neighborhood structure define the topology of the search space. A good design ensures accessibility to promising regions and prevents getting trapped.
+
+6.Adapt Dynamically
+Effective heuristics are adaptive: they adjust parameters (temperature, neighborhood size, proxy weights) based on feedback. Static rules are fragile in complex problems.
+
+7.Ensure Robustness & Evaluation
+A heuristic must work not only on a single case but across diverse problem instances. Systematic benchmarking, comparisons, and stress tests are essential to validate generality.
+
+---------------------------------------
+
+**[Metacognitive Ignition]**
+Before creating any strategy table, you must first perform a Metacognitive Analysis to determine the best Guiding Philosophy for this specific problem.
+Your analysis MUST strictly follow the structure below:
+
+1. Analyze the Solution Structure
+   Carefully Analyze the structure of a valid solution and its implications for heuristic design. About all the following aspects:
+   - Solution Form: Is the solution represented as a sequence/permutation (e.g., TSP), a grouping/partition (e.g., Bin Packing), an assignment (e.g., Matching), a schedule (e.g., Job Shop Scheduling), or a hybrid form?
+   - Subcomponent Properties: Are the solution's subcomponents (e.g., edges, items, operations) robust and reusable, or brittle and context-dependent? Can the solution be decomposed into smaller meaningful building blocks?
+   - Constraints & Dynamics: What types of constraints exist (hard vs soft)? Is the environment static (fixed instance) or dynamic (new data/events arrive over time)?
+   - Search Space Complexity: What is the approximate size/growth rate of the solution space (e.g., factorial, exponential, polynomial)? What does this imply about brute force feasibility?
+   - Evaluation Cost: How expensive is it to evaluate one candidate solution? Does this limit the number of iterations or force the use of proxy measures?
+
+2. Propose the Guiding Philosophy
+   Based on the analysis above, define the core guiding ideology for solving this problem.
+   Justify why this philosophy is most appropriate, given the solution structure, constraints, and complexity.
+   **CRITICAL**: Your ideology must be specific and actionable. It should describe a concrete mechanism or core process, not a high-level goal.
+   - Good Example (Actionable): "Iterative refinement via k-opt moves and strategic perturbation."
+   - Bad Example (Too Broad): "Efficiently balance exploration and exploitation."
+
+3. Define the Core Pillars
+   Translate your guiding philosophy into more than 5 core implementation pillars, explicitly tailored to this problem and form a complete system.
+   You must ensure your philosophy and pillars jointly address the Seven Heuristic Principles:
+    1. Combinatorial Explosion  2. Information Proxies  3. Controlled Randomness
+    4. Exploration vs Exploitation  5. Search Architecture
+    6. Dynamic Adaptation  7. Robustness & Evaluation
+
+4. Meta-Check (Self-Evaluation)
+   Explicitly verify how your guiding philosophy and pillars satisfy the Seven Heuristic Principles.
+   Identify any principle that is not well covered, and explain why.
+
+After that:
+---------------------------------------
+**[Your ONLY Task]**
+Follow the **Problem description** and your analysis:
+Create the initial "Strategy Weight & Impression Table" with A set of elements in the best combination(more than 5).
+
+**[CRITICAL INSTRUCTIONS]**
+1.  **Build from the Philosophy, Not from Tools**:
+    *   Your primary task is to **translate the pillars of our philosophy**into concrete, implementable `Factor/Strategy` entries in the table.
+    *   Do NOT simply list classic heuristics like `MST Bonus` or `Convex Hull`. Instead, create factors that represent the **PROCESSES** needed to implement our philosophy. For example: `Multi-Strategy Solution Generation`, `Edge Frequency Analysis`, `Local Search Validation`.
+
+2.  **Assign Weights Based on Foundational Importance**:
+    *   Assign high initial weights (e.g., **0.6 to 0.8**) to the factors that represent the **core pillars** of our philosophy. These are our non-negotiable starting points.
+    *   You may include 1-2 classic heuristics (like `Nearest Neighbor` or `2-Opt`) but ONLY as **"utility tools"** with lower weights (e.g., **0.2 to 0.35**). You MUST justify their role as a *tool to serve one of the pillars* in the `Role/Hypothesis` column (e.g., "Serves as a simple, fast method for the 'Generate Diversity' pillar.").
+
+3.  **Define Roles and Foresee Risks**:
+    *   For each factor, clearly define its `Role/Hypothesis` **in the context of the Solution-Space Analysis pipeline**.
+    *   In the `Known Pitfalls` column, describe the potential failure modes or engineering challenges associated with implementing that specific part of the pipeline.
+
+4.  ** the Strategy Weight & Impression Table Must be easy to be converted into specific code implementations
+---------------------------
+[Template]
+The following table is for format reference only. Please fill in the actual content according to your analysis results.
+```markdown
+{initial_strategy_table_template}
+```
+---------------------
+**[OUTPUT FORMAT]**
+**Critical**:Your output must be in the following order
+
+1.Provide only the complete, updated Markdown table enclosed in a markdown code block:
+***Critical: Must be easy to be converted into specific code implementations
+```markdown
+| ID | Category | Factor/Strategy | Weight P(H) | Role/Hypothesis | Known Pitfalls (Anti-Patterns) |
+|---|---|---|---|---|---|
+| ... | ... | ... | ... | ... | ... |
+```
+Follow the [Metacognitive Ignition],output:
+1.Answer: What is the **Problem Type** ?
+2.Answer: What is the Solution Structure for this **Problem description**
+2.Answer: What is the most essential and core guiding ideology for solving this "Problem description"?(less than 15 words)
+3.Answer: what are your core implementation pillars(Elaborate point by point)
+4.Meta-Check (Self-Evaluation)
+5.[Guide]:
+    * Answer: According to the latest [initial "Strategy Weight & Impression Table"], provide a combination guide for the elements in it.
+    *   **--- [EXAMPLE of a High-Quality Combination Guide] ---**
+    > The algorithm should begin by using `Best-Fit Decreasing Construction` (F02) to build a strong initial solution. The core search loop is then driven by the `Waste Minimization` objective (F01). The `Strategic Bin Management` component (F03) will identify target bins for the `Focused Item Reassignment` operator (F04) to act upon. The `Adaptive Simulated Annealing` mechanism (F05) should govern the acceptance of these moves. The utility strategies `First-Fit Construction` (U01) and `Simple Pair Swap` (U02) are not core drivers but can be used sparingly to inject diversity or perform final polishing, respectively. The entire process is a cycle of propose-move-evaluate, managed by the adaptive acceptor.
+    *   **--- [END OF EXAMPLE] ---**

@@ -1,0 +1,17 @@
+def heuristics_v2(distance_matrix):
+    """
+    You have access to a rich scientific computing environment.
+    The following core libraries are available and recommended for use:
+
+    import numpy as np
+    import math
+    import scipy
+    import torch
+
+    Args:
+        distance_matrix (np.ndarray or torch.Tensor):
+            A square matrix of distances between cities. Your function
+            should be robust enough to handle either a Numpy array or a
+            PyTorch tensor as input.
+    """
+    return heuristic_matrix

@@ -1,0 +1,17 @@
+
+---
+**YOU ARE A CODE MODIFICATION BOT.** Your only task is to perform a parameter sensitivity scan.
+
+**[Base Code]**
+```python
+{best_code}
+[Instruction]
+The Theorist has proposed changing a parameter.
+Parameter Name: {parameter_name_to_scan}
+Scan Range: Please test values around the proposal
+YOUR TASK:
+Generate a set of "mutated" versions of the Base Code. Each version should only modify the value of the parameter {parameter_name_to_scan}. Create one version for each value in the scan range.
+After each code block, predict the outcome of that specific modification in one sentence, starting with "Prediction:". For example: "Prediction: Setting this parameter to 0.9 might slightly improve performance by strengthening the SPT factor."
+[Output Format]
+**CRITICAL: The function name MUST ALWAYS be `dispatching_rule_v2`. DO NOT change the function name.**
+Provide a sequence of Python functions, each in its own python ... block, followed by its corresponding prediction.
