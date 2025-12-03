@@ -1,0 +1,66 @@
+# =================================================================
+# ARES (AI Research Ensemble System)
+# =================================================================
+# -----------------------------------------------------------------
+
+algorithm: ares
+
+
+problem:
+  problem_name: tsp
+  description: "tsp"
+  func_name: "heuristics_v2"
+  obj_type: "min"
+
+num_eval_workers: 8
+
+init_pop_size: 30
+
+pop_size: 10
+
+max_fe: 100
+
+timeout: 240
+
+eval_runs: 3
+
+meta_reflection_cycle_period: 4
+
+radical_exploration_trigger: 1
+
+radical_exploration_duration: 2
+
+stagnation_threshold: 0.001 # 0.1%
+
+
+llm_roles:
+
+  theorist:
+    _target_: utils.llm_client.openai.OpenAIClient
+    model: "deepseek-v3"
+    api_key:
+    temperature: 1.0
+    base_url:
+    max_tokens: 20000
+
+
+  critic:
+    _target_: utils.llm_client.openai.OpenAIClient
+    model: "deepseek-v3"
+    api_key:
+    temperature: 0
+    base_url:
+    max_tokens: 40000
+
+
+
+  experimenter:
+    _target_: utils.llm_client.openai.OpenAIClient
+    model: "deepseek-v3"
+    api_key:
+    temperature: 1.2
+    base_url:
+    max_tokens: 20000
+
+
+
