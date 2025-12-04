@@ -1,4 +1,0 @@
-problem_name: tsp_gls
-problem_type: tsp_gls
-obj_type: min
-func_name: heuristics
