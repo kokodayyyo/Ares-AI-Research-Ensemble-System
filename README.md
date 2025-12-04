@@ -87,14 +87,20 @@ Create a new folder in the `problems/` directory with your problem name (e.g., `
     *   **Crucial Requirement**: The script must print the **Fitness Value** (a single float number) as the **very last line** of its standard output (stdout). ARES reads this last line to score the individual.
 
 ### Step 2: Prompt Context (`prompts/`)
-Create a corresponding folder in the `prompts/` directory (e.g., `prompts/my_new_task`). You must create three text files here, referencing existing examples (e.g., `func_signature.txt`, `func_desc.txt`, `seed_func.txt`):
+Create a corresponding folder in the `prompts/` directory. **For simplicity, use the exact same name as your problems folder** (e.g., `prompts/my_new_task`).
 
+You must create three text files here, referencing existing examples (e.g., `func_signature.txt`, `func_desc.txt`, `seed_func.txt`):
 1.  **Function Signature**: Defines the required input/output format.
 2.  **Function Description**: Provides context and rules for the problem.
 3.  **Seed Function**: A basic valid solution or starting point.
 
 ### Step 3: Configuration (`cfg/problem/`)
-Create a new configuration file in `cfg/problem/` (e.g., `my_new_task.yaml`). Define problem-specific parameters here.
+The simplest way to configure a new problem is to maintain **consistent naming** across all directories.
+
+1.  **Uniform Naming**: Ensure your benchmark folder in `problems/` and your prompt folder in `prompts/` share the **exact same name** (e.g., `my_new_task`).
+2.  **Duplicate & Rename**: Go to `cfg/problem/`, copy an existing configuration file (as a template), and rename it to match your problem name (e.g., `my_new_task.yaml`).
+3.  **Update Content**: Open your new `.yaml` file and simply update the `problem_name` and `problem_type` field to match the filename (e.g., `problem_name: my_new_task`).
 
 ### Step 4: Integration
-Once the above steps are complete, simply update `problem_name` in `cfg/config.yaml` to your new problem's name to start the evolution.
+Once the above steps are complete, simply update `problem_name` in the main `cfg/config.yaml` to your new problem's name to start the evolution.
+
