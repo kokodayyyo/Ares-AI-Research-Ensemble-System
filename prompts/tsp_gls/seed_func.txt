@@ -1,8 +1,0 @@
-import numpy as np
-import math
-import scipy
-import torch
-
-def heuristics(distance_matrix: np.ndarray) -> np.ndarray:
-    # It's bad to include long edges in the solution
-    return distance_matrix
