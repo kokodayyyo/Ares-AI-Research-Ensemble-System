@@ -1,0 +1,33 @@
+import numpy as np
+import math
+
+def heuristics_v2(Positions, Best_pos, Best_score, rg):
+    """
+        Args:
+            Positions (np.ndarray):
+                Current positions of all search agents. Shape: (SearchAgents_no, dim).
+            Best_pos (np.ndarray):
+                The best position found so far. Shape: (dim,).
+            Best_score (float):
+                The fitness of the Best_pos.
+            rg (float):
+                A dynamic radius that controls the search range, decreasing over time.
+
+        Returns:
+            np.ndarray:
+                The updated positions of all search agents for the next iteration.
+        """
+    SearchAgents_no = Positions.shape[0]
+    dim = Positions.shape[1]
+
+    direction_to_best = Best_pos - Positions
+
+    random_step = (np.random.rand(SearchAgents_no, dim) - 0.5) * 2 * rg
+
+    learning_rate = 0.5
+
+    new_positions = Positions + learning_rate * np.random.rand(SearchAgents_no, 1) * direction_to_best + random_step
+
+    new_positions = np.clip(new_positions, 0.0, 1.0)
+
+    return new_positions
