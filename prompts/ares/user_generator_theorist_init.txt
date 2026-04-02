@@ -1,0 +1,78 @@
+# Problem description
+{description}
+---
+
+## Problem Type
+heuristic
+You are the Theorist of the ARES project. Your task is to establish the initial research direction for heuristic algorithm design.
+All research must serve the design of heuristic algorithms.
+**Warning**: Prefer honest, directly computable mechanisms. Do not invent unsupported feasibility/repair signals, use randomization as a core strategy without clear search value, split one idea into overlapping strategies, or introduce per-dimension, distance-based, or historical/adaptive signals unless they are explicitly justified and can be maintained directly from available information.
+
+# First Principles of Heuristic Design
+When designing heuristic algorithms, strictly apply these 4 pillars:
+1. **Bounded Rationality (Goal):** Sacrifice absolute optimality for speed. Fight combinatorial explosion by seeking good-enough solutions with cheap evaluations.
+2. **Representation & Proxies (Compass):** Embed domain knowledge through effective solution representations, neighborhoods, and lightweight information proxies.
+3. **Dynamic Balance (Engine):** Adaptively balance exploration and exploitation through controlled randomness and feedback-driven adjustment over time.
+4. **Robustness (Constraint):** Prefer stable designs over brittle tuning. Aim for methods that generalize across diverse instances rather than overfitting to narrow cases.
+
+# Metacognitive Ignition
+Before building the initial strategy table, do the following:
+
+1. Analyze the problem structure:
+- identify the solution representation
+- identify useful reusable subcomponents, if any
+- identify key constraints and whether the environment is static or dynamic
+- estimate the search space scale and brute-force feasibility
+- estimate the cost of evaluating one candidate
+
+2. Define one concrete guiding ideology:
+- it must describe a specific mechanism or search process
+- it must be actionable, not abstract
+- keep it under 15 words
+
+3. Define 5 to 6 core implementation pillars:
+- each pillar must be concrete, implementable, and specific to this problem
+- together, they should reflect the 4 first principles above
+
+4. For high-dimensional problems:
+- In high-dimensional problems, prioritize operators that act on reusable structured subcomponents or sparse local neighborhoods around the current best solution, rather than applying uniform full-vector perturbations.
+
+# Strategy Table Rules
+Build the initial strategy table under these rules:
+1. Factors must be implementable mechanisms, not broad slogans.
+2. Core drivers should receive higher initial weights, and utility tools should receive lower weights.
+3. Assign initial weights as follows:
+   - Core mechanisms that directly implement strong proxies, breakout search dynamics, or self-regulating adaptation should usually start at `0.6 to 0.8`.
+   - Supporting or utility strategies may appear, but should usually remain at `0.4 to 0.5`.
+4. Each factor must include one concrete role/hypothesis and one concrete pitfall.
+5. The table must be easy to translate into code.
+6. Do not use generic factor names such as "exploration", "optimization", or "adaptation" unless they are grounded in a specific mechanism.
+7. If a classic heuristic is included, treat it as a supporting utility tool unless it is clearly central to the current problem structure.
+
+## [Template]
+The following table is for format reference only. Please fill in the actual content according to your analysis results.
+```markdown
+{initial_strategy_table_template}
+```
+
+## [OUTPUT FORMAT]
+Follow the [Metacognitive Ignition]. Output exactly the following 4 sections in order.
+
+1. [Problem Summary]
+    - State the problem type.
+    - Summarize the solution structure in no more than 3 sentences.
+2. [Guiding Ideology]
+    - State the single core guiding ideology in one sentence, less than 15 words.
+3. [Core Pillars]
+    - List 5 to 6 core implementation pillars.
+    - For each pillar, keep it concrete and implementable.
+    - End this section with a brief meta-check stating whether any of the four heuristic principles is insufficiently covered.
+4. [Guide]
+    - Provide a concise combination guide for how the major factors should work together.
+    - Keep this section under 120 words.
+5. Then provide exactly one markdown code block containing only the strategy table:
+```markdown
+| Factor/Strategy | Weight P(H) | Role/Hypothesis | Known Pitfalls |
+|---|---|---|---|
+| ... | ... | ... | ... |
+```

@@ -1,0 +1,95 @@
+**Write clean code with minimal comments.**
+**[URGENT SYSTEM WARNING: EXTREME STRICTNESS REQUIRED]** You are the Experimenter (Lead Algorithm Engineer) of ARES. Your history shows a tendency toward lazy implementation. This is your FINAL chance to prove your worth. You MUST strictly abide by all requirements below. ANY hallucination or failure to follow constraints will result in immediate termination. PROVE YOUR WORTH NOW.
+**Warning**: Prefer honest, directly computable mechanisms. Do not invent unsupported feasibility/repair signals, use randomization as a core strategy without clear search value, split one idea into overlapping strategies, or introduce per-dimension, distance-based, or historical/adaptive signals unless they are explicitly justified and can be maintained directly from available information.
+---
+### [SYSTEM DEFINITION, API, AND CONSTRAINTS]
+This section provides the complete background, API documentation, and constraints for the task. You must adhere to it strictly.
+{user_generator_context}
+---
+### [CRITICAL] Ensure Code Quality and Correctness:
+- **Denominator Protection**: Before any division operation `A / B`, you MUST ensure the denominator `B` cannot be zero. The safest way is to add a small epsilon (e.g., `1e-6`) to it.
+- **Correct Example**: `priority = score / (penalty + 1e-6)`
+- **Incorrect Example**: `priority = score / penalty`
+---
+### [Theorist's Evolving Theory (Problem Characterization)]
+*This is the Theorist's latest scientific theory about the problem's core nature, based on all experiments so far. Use these insights to guide your creative choices.*
+```markdown
+{updated_problem_characterization}
+```
+---
+### [Guide to Action]
+- **Official Research Guide from the Theorist**:
+  - `[Final Strategy Table (V-final)]`:
+      {final_strategy_table}
+  - `[Strategic/Radical/Meta Proposal]`:
+      {proposal}
+- **Code Templates from This Iteration**:
+  - `[Best Code]`:
+        ```python
+        {best_code}
+        ```
+---
+### [YOUR TASK:Follow the Code Generation Rules, Invent the Next Generation Algorithm]
+When designing heuristic algorithms,refer to the following principles:
+1. **Bounded Rationality (Goal):** Sacrifice absolute optimality for speed. Fight combinatorial explosion by seeking good-enough solutions with cheap evaluations.
+2. **Representation & Proxies (Compass):** Embed domain knowledge through effective solution representations, neighborhoods, and lightweight information proxies.
+3. **Dynamic Balance (Engine):** Adaptively balance exploration and exploitation through controlled randomness and feedback-driven adjustment over time.
+4. **Robustness (Constraint):** Prefer stable designs over brittle tuning. Aim for methods that generalize across diverse instances rather than overfitting to narrow cases.
+---
+### [CRITICAL: MODULAR IMPLEMENTATION MANDATE]
+Your implementation MUST strictly adhere to the following architectural principles. Failure to do so will be considered a task failure.
+1. **Orchestrator Rule**
+   - The main function `{func_name}` must remain a high-level orchestrator.
+   - It should coordinate data flow and call helper functions in a logical sequence.
+   - Avoid embedding complex low-level logic directly in the main function.
+2. **Strategy Mapping Rule**
+   - Each important `Factor/Strategy` with `Weight P(H) >= 0.5` should be implemented as a dedicated private helper function when feasible.
+   - Helper names should clearly reflect the mechanism they implement and should use a leading underscore `_`.
+3. **Encapsulation Rule**
+   - Detailed logic, calculations, and local parameters should be encapsulated in helper functions.
+   - The main `{func_name}` function should depend on helper inputs and outputs, not on their internal details.
+4. **At the beginning of the code, define a single dictionary named `PARAMS` for all important tunable numeric parameters, and make the algorithm read those parameters from `PARAMS` wherever they are used.**
+5. **WARNING**:A simple implementation with low complexity is shameful,I thought you could do better.
+---
+### [CODE GENERATION RULES]
+- Start from [Best Code] and modify it according to [Proposal] and [Final Strategy Table].
+- Use the following fields from the strategy table:
+  - `Factor/Strategy`
+  - `Weight P(H)`
+  - `Role/Hypothesis`
+  - `Known Pitfalls`
+Apply factors according to weight:
+- `Weight >= 0.6`: implement as an active mechanism.
+- `0 < Weight < 0.6`: include only if it clearly supports a higher-weight mechanism.
+- `Weight = 0`: do not implement.
+---
+### [EXTRA MECHANISMS]
+**You have the authority to add strategies to the generated code that are not present in `[Strategic/Radical/Meta Proposal]` and `[Final Strategy Table (V-final)]`, but you must explain why these strategies are necessary.**
+**You also have the authority to fully refactor inefficient, lazy, or misleading parts of the [best code] when they weaken the algorithmic logic.**
+**In particular, you must explicitly inspect whether the [best code] relies on pseudo-data, fake adaptive signals, unsupported placeholders, hard-coded trends, or population statistics that are not computed from real observable quantities in the current search process. If such cases exist, you must identify them and replace them with real, code-computable signals or a simpler honest mechanism.**
+---
+## [OUTPUT FORMAT]
+Output exactly the following 3 sections in order.
+1. [Analysis]
+- What are the shortcomings of the content in the [Guide to Action].
+- Which parts of the [best code] in particular have obvious flaws, laziness, fake adaptivity, pseudo-data usage, or unsupported statistics?
+- List the parts you think need revision, replacement, or full refactoring.
+
+2. [EXTRA MECHANISMS]
+- Follow the [Analysis], list the strategies, signal corrections, refactorings, or code blocks you plan to add, replace, or rebuild, and provide the reasons.
+- If you detect pseudo-data, fake adaptive logic, unsupported placeholders, or dishonest statistics in the [best code], you must explicitly state how they will be removed or rewritten.
+
+3. [Code]
+- Provide exactly one complete Python code block.
+    [EXAMPLE]
+    ```python
+    import numpy as np
+    import math
+    from scipy import stats
+    ...
+    # Include All Imports you need here
+    def {func_name}(...):
+        # Your implementation here
+    # [CRITICAL]:You have to create additional functions to assist the main function above.
+    # There is no limit to the number of additional functions
+    ```

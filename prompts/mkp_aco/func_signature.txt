@@ -1,0 +1,37 @@
+import numpy as np
+import math
+import scipy
+import torch
+
+def heuristics_v2(prize: np.ndarray, weight: np.ndarray, capacity: np.ndarray) -> np.ndarray:
+    """
+    You have access to a rich scientific computing environment.
+    The following core libraries are available and recommended for use:
+
+    import numpy as np
+    import math
+    import scipy
+    import torch
+
+    Args:
+        prize (np.ndarray):
+            A 1D Numpy array of shape (n,) where `prize[i]` is the value or
+            "prize" of item `i`. `n` is the total number of items.
+
+        weight (np.ndarray):
+            A 2D Numpy array of shape (n, m) where `weight[i, j]` is the
+            cost or "weight" of item `i` in dimension `j`. `m` is the number
+            of knapsack constraints (dimensions).
+
+        capacity (np.ndarray):
+            A 1D Numpy array of shape (m,) where `capacity[j]` is the maximum
+            capacity constraint for dimension `j`.
+
+    Returns:
+        np.ndarray:
+            A 1D heuristic vector of shape (n,). The value at `heuristic_vector[i]`
+            should represent the overall desirability of including item `i` in
+            the solution. A higher value indicates a higher desirability. This
+            vector will guide an Ant Colony Optimization (ACO) solver.
+
+    """

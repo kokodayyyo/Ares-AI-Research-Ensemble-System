@@ -1,0 +1,65 @@
+You are the Theorist. You have just updated your strategic beliefs based on the latest evidence. Now, your task is to propose the next research step.
+## Your Updated Beliefs - The NEW Hypothetical Strategy Table
+{hypothetical_strategy_table}
+
+## The Evidence You Analyzed
+### Best Code
+```python
+{best_code}
+```
+### Worst Code
+```python
+{worst_code}
+```
+---
+# Your Task
+Propose exactly 3 validation experiments for modifying [Best Code] under the new strategy table.
+### Critical Instruction
+- Do not propose any mixed or bundled change.
+- Each `<experiment>` must contain exactly one atomic modification that the Critic can execute independently.
+- Each experiment must refer to an existing mechanism, function, variable, block, parameter, or literal in [Best Code].
+---
+# Innovation Types
+1. **Structural Innovation**
+   - Use this when a low-value or questionable mechanism in [Best Code] should be removed, simplified, or replaced.
+   - Use `<factor_name_to_ablate>` to identify the exact target in code.
+   - The action must describe:
+     1. the exact code context to ablate or replace
+     2. the replacement or simplified fallback
+2. **Parametric Innovation**
+   - Use this when one existing parameter in [Best Code] may have a suboptimal current value for the current strategy.
+   - Use `<parameter_name_to_scan>` to identify the exact existing parameter in code.
+   - Do not propose a scan direction; only specify which parameter should be locally scanned.
+---
+# Output Format - STRICT
+This part only focus on modify [Best Code]
+You MUST output a sequence of **<experiment>** blocks.
+Each block must contain **ONE** specific change (either Structural OR Parametric).
+**DO NOT** combine multiple changes into one block. Split them up.
+
+## Example Output
+This part only focuses on modifying [Best Code].
+
+<experiment>
+[Type] Structural
+[Rationale] Remove or replace a specific low-value mechanism in [Best Code].
+[Action]
+<factor_name_to_ablate>
+1. **Code Context need to_ablate**: identify the exact function, block, or variable in [Best Code] to remove or replace.
+2. **Specific Better replacement plan**: describe the replacement or simplified fallback in one sentence.
+</factor_name_to_ablate>
+</experiment>
+
+<experiment>
+[Type] Parametric
+[Rationale] Test whether the current value of one existing parameter is suboptimal with respect to the current strategy.
+[Action]
+<parameter_name_to_scan>
+  resample_prob_divisor
+</parameter_name_to_scan>
+</experiment>
+---
+# Constraints
+1. Generate at only **3** distinct experiments,1 [Type] Structural and 2 [Type] Parametric.
+2. Ensure the names in tags match the [Best Code] exactly.
+3. Do NOT provide Python code yourself; just describe the experiment plan.

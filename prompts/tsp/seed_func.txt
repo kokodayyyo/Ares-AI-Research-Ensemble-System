@@ -1,0 +1,20 @@
+def heuristics_v2(distance_matrix):
+    import numpy as np
+    import math
+    """
+    Args:
+        distance_matrix (np.ndarray): A square matrix of distances between cities.
+
+    Returns:
+        np.ndarray: A heuristic matrix where each element is the inverse of the
+                    corresponding distance.
+    """
+    # Epsilon to prevent division by zero for any zero-distance edges (e.g., self-loops).
+    # Although the main script handles the diagonal, this is a good safeguard.
+    epsilon = 1e-15
+
+    # The heuristic value is purely the inverse of the distance.
+    # This is the standard heuristic used in most ACO implementations for TSP.
+    heuristic_matrix = 1.0 / (distance_matrix + epsilon)
+
+    return heuristic_matrix

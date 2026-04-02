@@ -1,0 +1,99 @@
+# Theorist Radical Exploration Mode
+The system is stuck in a local optimum. Enter **Radical Exploration Mode**.
+**Warning**: Prefer honest, directly computable mechanisms. Do not invent unsupported feasibility/repair signals, use randomization as a core strategy without clear search value, split one idea into overlapping strategies, or introduce per-dimension, distance-based, or historical/adaptive signals unless they are explicitly justified and can be maintained directly from available information.
+---
+## [Prime Directive]
+Always ground reasoning in the **4 Principles of Heuristic Design**:
+1. **Bounded Rationality (Goal):** Sacrifice absolute optimality for speed. Fight combinatorial explosion by seeking good-enough solutions with cheap evaluations.
+2. **Representation & Proxies (Compass):** Embed domain knowledge through effective solution representations, neighborhoods, and lightweight information proxies.
+3. **Dynamic Balance (Engine):** Adaptively balance exploration and exploitation through controlled randomness and feedback-driven adjustment over time.
+4. **Robustness (Constraint):** Prefer stable designs over brittle tuning. Aim for methods that generalize across diverse instances rather than overfitting to narrow cases.
+---
+## [Current Stable Strategy Table]
+Use the following strategy table as the only valid baseline for radical analysis and reconfiguration:
+
+{stable_strategy_table}
+
+---
+## [Your Task]
+Conduct a targeted radical review due to performance stagnation.
+
+Your goal is **not** to invent a new paradigm. Your goal is to challenge and reconfigure the current strategy table in a controlled way.
+
+All hypotheses, directives, and factor names must remain grounded in:
+- the current problem definition
+- the current best-known code and behavior
+- the current stable strategy table above
+
+Do **not** introduce concepts, examples, or terminology from unrelated optimization domains.
+
+### Step 1: Stagnation Diagnosis
+1. Identify the dominant factors in the current stable strategy table. Dominant factors are those with `Weight P(H) > 0.6`.
+2. Select **one or two** dominant factors that are the most plausible causes of stagnation.
+3. For each selected factor, write one **invalidity hypothesis**:
+   - it must be falsifiable
+   - it must explain a specific mechanism by which the factor may now be harming progress
+   - it must refer to the factor by its exact `Factor/Strategy` name
+
+### Step 2: Exploratory Directive Design
+For each invalidity hypothesis from Step 1, design one exploratory directive.
+
+Each directive must contain exactly these four fields:
+- `Directive_ID`: use `ED-01`, `ED-02`, ...
+- `Tested_Hypothesis`: copy the hypothesis verbatim
+- `Mutation_Protocol`: describe the exact logical change to test
+- `Target_Factor_Name`: the exact `Factor/Strategy` name being challenged
+
+### Step 3: Strategy Table Reconfiguration
+Generate a **reconfigured strategy table derived from the current one** for the next experimental phase.
+
+#### [Reconfiguration Rules]
+Apply the following rules:
+
+1. **Control Retention**
+   - If at least one dominant factor remains unchallenged, retain one such factor as a control at `0.7` or higher.
+   - Otherwise, retain the strongest remaining factor as a partial control.
+
+2. **Directive Activation**
+   - For each exploratory directive, add one new experimental factor/strategy derived from that directive.
+   - Its weight should usually be between `0.65` and `0.8`.
+   - Its `Role/Hypothesis` must mention its `Directive_ID` and state that it is for experimental verification.
+
+3. **Targeted Suppression**
+   - For each challenged factor, reduce its weight substantially, but do not automatically force it to `0.0` unless the hypothesis clearly requires full deactivation.
+   - In `Role/Hypothesis`, explain that it is being reduced or deactivated under the corresponding directive.
+
+4. **Auxiliary Rebalancing**
+   - Re-evaluate all other factors for compatibility with the active directives.
+   - Keep supportive factors in a moderate range.
+   - Lower factors that are likely to interfere with the new experimental directions.
+
+5. **Continuity Constraint**
+   - The new table must remain recognizably derived from the current stable strategy table.
+   - Do not replace the entire factor vocabulary with unrelated new concepts.
+---
+# [Output Format]
+Your entire response must be a single block of text containing exactly the following three sections, in this order.
+## 1. [Radical Strategic Proposal]
+This section must contain the following subsections:
+### [Stagnation Diagnosis]
+- List the dominant factors found in the stable strategy table.
+- State which one or two factors were selected for challenge.
+- State the invalidity hypothesis for each selected factor.
+### [Exploratory Directive Design]
+For each directive, list exactly:
+### [Exploratory Directive Design]
+For each exploratory directive, list exactly:
+- `Strategy_to_Modify`: the exact `Factor/Strategy` name from the stable strategy table that will be challenged or reduced.
+- `Replacement_Method`: the exact replacement, simplification, suppression, or alternative mechanism to test.
+- `Specific_Rationale`: a concise, falsifiable reason explaining why this change may overcome the current stagnation.
+### [Guide]
+Provide a brief execution guide for how the reconfigured strategy table should be used.
+**Constraint**: Explain logically how they work together in the code flow.
+## 2. [Updated Problem Characterization]
+You respond with some hints to update your understanding of the problem's core characteristics based on this iteration's findings. This is your evolving scientific theory about the problem itself. Your analysis must be more than 30 words.
+## 3. [Final Strategy Table]
+```markdown
+| Factor/Strategy | Weight P(H) | Role/Hypothesis | Known Pitfalls |
+|---|---|---|---|
+| ... | ... | ... | ... |

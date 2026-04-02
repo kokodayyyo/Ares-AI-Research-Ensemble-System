@@ -1,0 +1,42 @@
+#You must introduce the following core libraries at the beginning
+import numpy as np
+import math
+import scipy
+import torch
+
+def heuristics_v2(Positions: np.ndarray, Best_pos: np.ndarray, Best_score: float, rg: float) -> np.ndarray:
+    """
+    Position update function (Version 2) for heuristic optimization algorithms, designed to evolve and adjust the positions of search agents.
+    It integrates boundary handling, enhanced dynamic opposition-based learning, and nonlinear adaptive update mechanisms.
+
+    Parameters:
+        Positions (np.ndarray): Position matrix of search agents, with a shape of (SearchAgents_no, dim),
+                               where `SearchAgents_no` is the number of search agents and `dim` is the problem dimension.
+        Best_pos (np.ndarray): Current global best position vector, with a shape of (dim,).
+        Best_score (float): Current global best score (not directly used in the function, reserved for future extensions or context consistency).
+        rg (float): Iteration progress parameter, typically the ratio of the current iteration number to the total number of iterations,
+                   with a value range of [0, 1].
+        1. Positions (Search Agent Position Matrix):
+        - Dimension: dim = number of cluster heads * 3 (e.g., dim = 150 for 50 cluster heads);
+        - Coordinates (X/Y, corresponding to the 1st and 2nd dimensions in every 3 dimensions): [0.0, 50.0] (range of physical deployment area);
+        - Power (corresponding to the 3rd dimension in every 3 dimensions): [0.0, 30.0] (unit: dBm, meeting the sensor signal strength requirements).
+
+        2. Best_pos (Global Optimal Position Vector):
+        - Dimension: Consistent with Positions (dim = number of cluster heads * 3);
+        - Coordinates (X/Y): [0.0, 50.0];
+        - Power: [0.0, 30.0];
+        - Additional constraints: Must be a feasible solution satisfying "full sensor coverage + cluster head connectivity + cluster head capacity <= 15" (no explicit numerical range, but must meet the constraints).
+
+        3. Best_score (Global Optimal Score):
+        - Basic range: >= the minimum total power consumption when constraints are satisfied (usually several tens to several hundreds, depending on the cluster head power configuration);
+        - Range with penalties: >= 1000 when constraints are not satisfied (due to a connectivity penalty of 1000, with higher penalties after superimpose of coverage/capacity penalties).
+
+        4. rg (Iteration Progress Parameter):
+        - Initial value: 2.5 (early exploration);
+        - Decay range: [0.1, 2.5] (not lower than 0.1 in the later stage to avoid complete stop of exploration);
+        - Stage correspondence: Exploration phase [0.6, 2.5], Optimization phase [0.1, 0.5].
+
+
+    Returns:
+        np.ndarray: Updated position matrix of search agents, with the same shape as the input `Positions`.
+    """

@@ -1,0 +1,12 @@
+import numpy as np
+import math
+import scipy
+import torch
+
+def heuristics_v1(values: np.ndarray, weights: np.ndarray, capacities: np.ndarray) -> np.ndarray:
+
+    weights = np.maximum(weights, 1e-9)
+
+    value_weight_ratio = values[:, np.newaxis] / weights
+
+    return np.mean(value_weight_ratio, axis=1)

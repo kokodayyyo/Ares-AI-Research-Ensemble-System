@@ -1,0 +1,5 @@
+## 1. The Nature of the Problem: Core Concepts & Trade-offs
+The Traveling Salesman Problem (TSP) is a classic NP-hard optimization problem. At its heart, it is a challenge of managing a fundamental conflict: the trade-off between **Local Optimality (Exploitation)** and **Global Structure (Exploration)**.
+- **Local Optimality**: The greedy desire to always choose the shortest available next edge. This is powerful for refining tour segments but can lead to disastrous global paths if pursued blindly.
+- **Global Structure**: The need to form a coherent, well-shaped overall tour (e.g., a clean convex hull without major detours). This requires making non-obvious, sometimes locally suboptimal, choices to achieve a better global outcome.
+

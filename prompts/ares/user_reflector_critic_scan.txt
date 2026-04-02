@@ -1,0 +1,47 @@
+# CODE MODIFICATION BOT TASK
+YOU ARE A CODE MODIFICATION BOT. Your only task is to perform ONE feature ablation for following [Base Code].
+---
+## [Base Code]
+```python
+{best_code}
+```
+---
+## [Instruction]
+Parametric Change (Scan Target): A parameter change for {parameter_name_to_scan}.
+
+## [Theorist Proposal Context]
+{strategic_innovation_proposal}
+---
+## YOUR TASK
+1. Identify the exact code region(s) in [Base Code] that define or use {parameter_name_to_scan}.
+2. Determine ONE concrete target value for a single-point scan, using the Theorist Proposal Context:
+   - If the proposal explicitly specifies a numeric replacement (e.g., "change -20.0 to -30.0"), use that explicit value.
+   - If the proposal indicates a direction only (e.g., "Higher change" / "Lower change") but no explicit number: Use a conservative single-step adjustment relative to the current literal value in code:
+     - Higher: multiply magnitude by 1.2 (or add +20% if positive, -20% if negative).
+     - Lower: multiply magnitude by 0.8.
+   - If neither explicit value nor direction is available, apply a default single-step: multiply the detected literal by 1.2.
+3. Create EXACTLY ONE mutated version of the Base Code where ONLY {parameter_name_to_scan} is changed to that single-point target.
+4. Preserve the function name and signature EXACTLY as in [Base Code]. The function name MUST be dispatching_rule_v2.
+5. Do NOT modify any other logic.
+---
+## [Output Format and Strict Contract]
+Your entire response MUST be a sequence of **exactly one** Python code blocks. Adherence to the following rules is **non-negotiable**. Any deviation will be considered a task failure.
+1. **Header Comment is MANDATORY**:
+   - Each code block **MUST** begin with a single-line Python comment that starts with `# Mutation - ` and precisely describes the change.
+   - **Correct Example**: `# Mutation - Feature Replacement: Replaced mean-based centrality with Harmonic Centrality.`
+2. **Code Body MUST Be Clean**:
+   - Following the header comment, the rest of the code block **MUST NOT** contain any other comments. The code should be clean and self-explanatory.
+3. **Function and Import Integrity**:
+   - The main function name (`heuristics_v2`) and its signature **MUST** remain identical to the `[Base Code]`, unless the explicit goal of the mutation is to test a signature change (which is rare).
+   - All necessary `import` statements **MUST** be placed at the top of the file, before the function definition.
+4. **No Conversational Text**:
+   - Your response **MUST NOT** contain any text outside of the one required Python code blocks. Do not add introductions like "Here are the mutants:" or any other explanations.
+---
+## [Final Output Structure Example]
+```python
+# Mutation - Parameter Scan: Changed the tanh_scaling_factor from 0.5 to 0.8.
+import numpy as np
+# ... other imports ...
+def heuristics_v2(...):
+    # ... code for the second mutant ...
+```
