@@ -1,0 +1,10 @@
+_target_: utils.llm_client.openai.OpenAIClient
+
+# Using Aliyun Bailian API
+# see more models at https://bailian.console.aliyun.com/?tab=model
+#model: qwen3-235b-a22b
+model: qwen-plus-latest
+temperature: 1.0
+api_key: sk-f75adaf5a1e24fd6b2124fc03e93c5d0
+# sk-69a53d12365c4b26b5b7a95d5e8a1e74
+base_url: https://dashscope.aliyuncs.com/compatible-mode/v1

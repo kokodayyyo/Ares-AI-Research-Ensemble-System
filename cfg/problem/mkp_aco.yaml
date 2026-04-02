@@ -1,0 +1,4 @@
+problem_name: mkp_aco
+problem_type: mkp_aco
+obj_type: max
+func_name: heuristics

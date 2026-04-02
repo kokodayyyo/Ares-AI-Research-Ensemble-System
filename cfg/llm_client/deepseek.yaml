@@ -1,0 +1,7 @@
+_target_: utils.llm_client.openai.OpenAIClient
+
+# Using deepseek API
+model: deepseek-chat
+temperature: 1.0  # temperature for chat completion
+api_key: sk-2ba661dbfe7d484b9fdafe73ad2a7ee9
+base_url: https://api.deepseek.com
